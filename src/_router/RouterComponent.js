@@ -11,6 +11,7 @@ const RouterComponent = () => {
       <Router>
         <Routes>
           <Route exact path="/" element={<Pages.Home />} />
+          <Route exact path="/details/:id" element={<Pages.Details />} />
         </Routes>
       </Router>
     </>

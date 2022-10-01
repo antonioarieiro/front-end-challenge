@@ -1,0 +1,18 @@
+
+.card {
+  cursor: pointer;
+  transition: all 0.4s;
+  &:hover {
+    transition: all 0.5s;
+    transform: translateX(7.76px);
+    transform: translateY(-7.76px);
+    p {
+      color: #000;
+    }
+  }
+  .title-card {
+    color: gray;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
