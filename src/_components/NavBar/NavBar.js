@@ -4,6 +4,7 @@ import Logo from '../../_assets/logo.gif'
 import AccountOptions from '../AccountOptions/AccountOptions';
 import ApikiContext from '../../_context/ApikiContext';
 import LoginModal from '../Modals/LoginModal';
+import { useNavigate } from 'react-router-dom';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import './NavBar.scss';
@@ -12,8 +13,9 @@ export default function NavBar() {
   const { isUser, setIsUser } = React.useContext(ApikiContext);
   const [openMenu, setOpenMenu] = React.useState(false);
   const [isModalLogin, setIsModalLogin] = React.useState(false);
+  const Navigate = useNavigate();
   const openModalLogin = () => {
-    setIsModalLogin(true)
+    setIsModalLogin(true);
   }
   return (
     <>
@@ -22,7 +24,7 @@ export default function NavBar() {
       }
       <div className='w-full h-20 flex items-center justify-around'>
         <div className='w-36 mt-4'>
-          <img src={Logo} alt="img" />
+          <img src={Logo} alt="img" onClick={() => {Navigate('/')}}/>
         </div>
         <div className='flex'>
           <span className=' z-50 mt-2 -mr-8 font-bold'>

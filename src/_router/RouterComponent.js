@@ -7,8 +7,8 @@ const RouterComponent = () => {
 
   return (
     <>
-      <Components.NavBar />
       <Router>
+      <Components.NavBar />
         <Routes>
           <Route exact path="/" element={<Pages.Home />} />
           <Route exact path="/details/:id" element={<Pages.Details />} />

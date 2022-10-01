@@ -1,12 +1,15 @@
 import React from "react";
 import ActiveButton from "../Buttons/ActiveButton";
+import ApikiContext from "../../_context/ApikiContext";
 import { useNavigate } from "react-router-dom";
 import './NoticeCard.scss';
 function Card(props) {
   const { data } = props;
+  const { setCurrentSlug } = React.useContext(ApikiContext);
   const Navigate = useNavigate();
 
   const viewPublication = (slug) => {
+    setCurrentSlug(slug)
     Navigate(`/details/${slug}`)
   }
   return (
