@@ -10,3 +10,13 @@
     border-radius: 4px;
   }
 }
+
+.text-register {
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    transition: all 0.5s;
+    text-decoration: underline;
+    font-size: 20px;
+  }
+}

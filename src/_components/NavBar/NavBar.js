@@ -1,13 +1,17 @@
 import React from 'react';
 import ActiveButton from '../Buttons/ActiveButton';
+import AccountOptions from '../AccountOptions/AccountOptions';
+import ApikiContext from '../../_context/ApikiContext';
 import LoginModal from '../Modals/LoginModal';
 import { IoIosNotificationsOutline } from 'react-icons/io';
+import { MdOutlineAccountCircle } from 'react-icons/md';
 import './NavBar.scss';
 
 export default function NavBar() {
-  const [isUser, setIsUser] = React.useState(false);
+  const { isUser, setIsUser } = React.useContext(ApikiContext);
+  const [openMenu, setOpenMenu] = React.useState(false);
   const [isModalLogin, setIsModalLogin] = React.useState(false);
-  const openModalLogin =  () => {
+  const openModalLogin = () => {
     setIsModalLogin(true)
   }
   return (
@@ -15,7 +19,7 @@ export default function NavBar() {
       {
         <LoginModal setIsUser={setIsUser} isModalLogin={isModalLogin} setIsModalLogin={setIsModalLogin} />
       }
-      <div className='w-full border h-20 flex items-center justify-around'>
+      <div className='w-full h-20 flex items-center justify-around'>
         <div className='w-20'>
           <img src="#" alt="img" />
         </div>
@@ -26,13 +30,18 @@ export default function NavBar() {
           <input type="text" placeholder='Write your search..' className='input-search' />
         </div>
         <div className='flex items-center'>
-          <span>
+          <span className='mr-4 p-2 rounded-full bg-[#C2E7FF] notification'>
             <IoIosNotificationsOutline size={40} />
           </span>
           <span>
             {
-              isUser
-                ? <img src="#" alt="img" className='w-14 h-14 m-4 rounded-full border' />
+              isUser.name
+                ? <div className='p-2 rounded-full bg-[#C2E7FF]' onMouseEnter={() => { setOpenMenu(true); }} onMouseLeave={() => { setOpenMenu(false); }}>
+                  <MdOutlineAccountCircle size={40} className='cursor-pointer account' />
+                  {
+                    openMenu && <AccountOptions />
+                  }
+                </div>
                 : <ActiveButton text={'Login'} action={true} exec={openModalLogin} />
             }
           </span>

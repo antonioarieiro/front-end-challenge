@@ -1,7 +1,20 @@
 import React from 'react';
+import ActiveButton from '../Buttons/ActiveButton';
+import CancelButton from '../Buttons/CancelButton';
 import './Modal.scss';
 export default function LoginModal(props) {
-  const { isModalLogin, setIsModalLogin } = props
+  const { isModalLogin, setIsModalLogin, setIsUser } = props;
+  const [userData, setUserData] = React.useState([]);
+
+  const loginUser = () => {
+    setIsUser(userData);
+    setIsModalLogin(false);
+  };
+
+  const cancelLogin = () => {
+    setIsModalLogin(false);
+  }
+
   return (
     <>
       <div className={
@@ -30,15 +43,19 @@ export default function LoginModal(props) {
               <label htmlFor='login'>
                 Login
               </label>
-              <input type='text' id="login" placeholder='login' />
-              <label htmlFor='password'>
-                Email
+              <input type='text' id="login" placeholder='login' onChange={(event) => {setUserData({name: event.target.value})}} />
+              <label htmlFor='password' class='mt-8'>
+                Password
               </label>
               <input id="password" type='password' placeholder='login' />
              </div>
-              <p className='mt-4 mb-4'>
+              <p className='mt-4 mb-4 text-register'>
               don't have an account? register here.
               </p>
+             <div className='flex justify-between'>
+             <ActiveButton text={'Login'} action={true} exec={loginUser}/>
+             <CancelButton text={'Cancel'} action={true} exec={cancelLogin}/>
+             </div>
             </div>
           </div>
         </div>
