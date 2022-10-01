@@ -1,9 +1,9 @@
-
+import RouterComponent from "./_router/RouterComponent";
 function App() {
   return (
-   <div className="border">
-    ola
-   </div>
+    <div>
+      <RouterComponent />
+    </div>
   );
 }
 
