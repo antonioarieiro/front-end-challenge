@@ -1,11 +1,20 @@
 import React from 'react';
+import ActiveButton from '../Buttons/ActiveButton';
+import LoginModal from '../Modals/LoginModal';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import './NavBar.scss';
 
 export default function NavBar() {
   const [isUser, setIsUser] = React.useState(false);
+  const [isModalLogin, setIsModalLogin] = React.useState(false);
+  const openModalLogin =  () => {
+    setIsModalLogin(true)
+  }
   return (
     <>
+      {
+        <LoginModal setIsUser={setIsUser} isModalLogin={isModalLogin} setIsModalLogin={setIsModalLogin} />
+      }
       <div className='w-full border h-20 flex items-center justify-around'>
         <div className='w-20'>
           <img src="#" alt="img" />
@@ -24,7 +33,7 @@ export default function NavBar() {
             {
               isUser
                 ? <img src="#" alt="img" className='w-14 h-14 m-4 rounded-full border' />
-                : <span className='cursor-pointer ml-4'>Login</span>
+                : <ActiveButton text={'Login'} action={true} exec={openModalLogin} />
             }
           </span>
         </div>
