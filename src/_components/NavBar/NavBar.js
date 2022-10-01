@@ -1,5 +1,6 @@
 import React from 'react';
 import ActiveButton from '../Buttons/ActiveButton';
+import Logo from '../../_assets/logo.gif'
 import AccountOptions from '../AccountOptions/AccountOptions';
 import ApikiContext from '../../_context/ApikiContext';
 import LoginModal from '../Modals/LoginModal';
@@ -20,12 +21,12 @@ export default function NavBar() {
         <LoginModal setIsUser={setIsUser} isModalLogin={isModalLogin} setIsModalLogin={setIsModalLogin} />
       }
       <div className='w-full h-20 flex items-center justify-around'>
-        <div className='w-20'>
-          <img src="#" alt="img" />
+        <div className='w-36 mt-4'>
+          <img src={Logo} alt="img" />
         </div>
         <div className='flex'>
           <span className=' z-50 mt-2 -mr-8 font-bold'>
-            <svg width="24" height="24" fill="none" stroke="#ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-none text-slate-300 dark:text-slate-400" aria-hidden="true"><path d="m19 19-3.5-3.5"></path><circle cx="11" cy="11" r="6"></circle></svg>
+            <svg width="24" height="24" fill="none" stroke="#ffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-none text-slate-300 dark:text-slate-400" aria-hidden="true"><path d="m19 19-3.5-3.5"></path><circle cx="11" cy="11" r="6"></circle></svg>
           </span>
           <input type="text" placeholder='Write your search..' className='input-search' />
         </div>
@@ -39,7 +40,7 @@ export default function NavBar() {
                 ? <div className='p-2 rounded-full bg-[#C2E7FF]' onMouseEnter={() => { setOpenMenu(true); }} onMouseLeave={() => { setOpenMenu(false); }}>
                   <MdOutlineAccountCircle size={40} className='cursor-pointer account' />
                   {
-                    openMenu && <AccountOptions />
+                    openMenu && <AccountOptions setIsUser={setIsUser}/>
                   }
                 </div>
                 : <ActiveButton text={'Login'} action={true} exec={openModalLogin} />

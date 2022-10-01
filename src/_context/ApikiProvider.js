@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ApikiContext from './ApikiContext';
 
 export const ApikiProvider = ({children}) => {
-  const [isUser, setIsUser] = React.useState(false);
+  const [isUser, setIsUser] = useState(false);
 
 
   return (
