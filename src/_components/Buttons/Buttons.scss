@@ -1,0 +1,31 @@
+.active-btn {
+  padding: 8px;
+  width: 150px;
+  background: #C2E7FF;
+  border-radius: 3px;
+  transition: all 0.4s;
+  font-weight: bold;
+  color: #000;
+  &:hover {
+    color: #ffff;
+    transition: all 0.4s;
+    padding: 10px;
+    background: #5aabdf;
+  }
+}
+
+.cancel-btn {
+  padding: 8px;
+  width: 150px;
+  background: #ff5067;
+  border-radius: 3px;
+  transition: all 0.4s;
+  font-weight: bold;
+  color: #000;
+  &:hover {
+    color: #ffff;
+    transition: all 0.4s;
+    padding: 10px;
+    background: #c50b24;
+  }
+}
