@@ -1,6 +1,8 @@
 import NavBar from "./NavBar/NavBar";
-import NoticeCard  from './NoticeCard/NoticeCard'
+import PublicationCard  from './PublicationCard/PublicationCard'
+import Skelleton from "./Skelleton/Skelleton";
 export const Components = {
   NavBar,
-  NoticeCard
+  PublicationCard,
+  Skelleton
 };

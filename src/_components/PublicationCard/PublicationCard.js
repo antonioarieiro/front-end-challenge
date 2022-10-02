@@ -36,5 +36,5 @@ function Card(props) {
   )
 }
 
-const NoticeCard = React.memo(Card);
-export default NoticeCard;
+const PublicationCard = React.memo(Card);
+export default PublicationCard;

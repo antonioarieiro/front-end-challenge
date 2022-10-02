@@ -4,13 +4,16 @@ import { Components } from "../../_components/Components";
 import { Service } from "../../_service/Apiki";
 import './Home.scss';
 export const Home = React.memo(() => {
-  const [data, setData] = React.useState([])
+  const [data, setData] = React.useState([]);
+  const [inFetch, setInFetch] = React.useState(false);
+  const [page, setPage] = React.useState(1);
   const options = ['Todos', 'Mais Recentes', 'Mais Acessados'];
   React.useEffect(() => {
     (async () => {
-      await Service.getFirstNews(setData);
+      await Service.getFirstNews(setData, setInFetch);
     })();
   }, []);
+
   return (
     <>
       <div className="w-full flex flex-col items-center justify-center">
@@ -27,12 +30,40 @@ export const Home = React.memo(() => {
           </select>
           <ActiveButton text={'Filtrar'} />
         </div>
-        <div className="flex flex-wrap ml-4 mr-4 p-4">
-          <Components.NoticeCard data={data} />
-        </div>
+        {
+          inFetch &&
+          <div className="flex flex-wrap ml-4 mr-4 p-4">
+            {Array.from(Array(10).keys()).map((_value) => (
+              <Components.Skelleton key={_value}/>
+            ))}
+          </div>
+        }
+        {
+          !inFetch &&
+          <>
+            <div className="flex flex-wrap ml-4 mr-4 p-4">
+              <Components.PublicationCard data={data} />
+            </div>
+            <div className="mb-20">
+              <span>
+                {
+                  [1, 2, 3, 4, 5, '...'].map((item, index) => (
+                    <span className={
+                      item === page
+                        ? 'font-bold p-4 selected'
+                        : 'font-bold p-4 page '
+                    } key={index + 'a'}
+                      onClick={() => { Service.getPublicationsByPage(item, setData, setPage, setInFetch) }}
+                    >
+                      {item}
+                    </span>
+                  ))
+                }
+              </span>
+            </div>
+          </>
+        }
       </div>
     </>
   );
 })
-
-
