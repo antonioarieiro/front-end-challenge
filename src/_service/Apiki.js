@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-const getFirstNews = async (state) => {
+const getFirstNews = async (state, setInFetch) => {
+  setInFetch(true);
   await axios.get(process.env.REACT_APP_URL_API)
     .then((res) => {
-      state(res.data)
+      setInFetch(false);
+      return state(res.data);
     });
 }
 
@@ -18,7 +20,18 @@ const getPublicationBySlug = async (slug, state) => {
     });
 }
 
+const getPublicationsByPage = async (page, state, setPage, setInFetch) => {
+  setInFetch(true);
+  setPage(page);
+  await axios.get(`${process.env.REACT_APP_PAGE}${page}`)
+    .then((res) => {
+      setInFetch(false);
+      return state(res.data);
+    });
+}
+
 export const Service = {
   getFirstNews,
-  getPublicationBySlug
+  getPublicationBySlug,
+  getPublicationsByPage
 };

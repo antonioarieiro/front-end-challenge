@@ -3,7 +3,23 @@
     padding: 8px;
     width: 90%;
   }
+
   option {
     padding: 4px;
   }
+}
+
+.page {
+  cursor: pointer;
+
+  &:hover {
+    color: #ffff;
+    background: #C2E7FF;
+  }
+}
+
+.selected {
+  margin: 2px;
+  color: #ffff;
+  background: #C2E7FF;
 }
