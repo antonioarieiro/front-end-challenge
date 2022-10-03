@@ -13,7 +13,7 @@ export default function LoginModal(props) {
 
   const cancelLogin = () => {
     setIsModalLogin(false);
-  }
+  };
 
   return (
     <>
