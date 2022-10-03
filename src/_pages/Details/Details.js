@@ -1,20 +1,36 @@
 import React from "react";
 import { Service } from "../../_service/Apiki";
 import ApikiContext from "../../_context/ApikiContext";
+import { useNavigate } from "react-router-dom";
 import Parser from 'html-react-parser';
 import './Details.scss';
 
 export const Details = React.memo(() => {
   const [details, setDetails] = React.useState([]);
-  const { currentSlug } = React.useContext(ApikiContext)
-  React.useLayoutEffect(() => {
+  const { currentSlug } = React.useContext(ApikiContext);
+  const Navigate = useNavigate();
+  React.useEffect(() => {
     (async () => {
       await Service.getPublicationBySlug(currentSlug, setDetails);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
+      <div className="ml-8 mt-8">
+        <button
+        className="return-btn flex items-center justify-center"
+        onClick={() => {Navigate('/'); }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="11.263" viewBox="0 0 16 11.263" className="ml-2">
+            <path id="Path_107" data-name="Path 107" d="M11.488,1.55h0a.554.554,0,0,0-.554.554V15.989L6.721,13.038a.554.554,0,0,0-.631.907l4.944,3.46a.781.781,0,0,0,.908,0l4.944-3.46a.554.554,0,1,0-.631-.908l-4.213,2.952V2.1A.554.554,0,0,0,11.488,1.55Z" transform="translate(17.55 -5.884) rotate(90)" fill="#000" />
+          </svg>
+          <span className="m-2 font-bold">
+          Voltar
+          </span>
+        </button>
+      </div>
       <div className="w-full flex flex-col items-center justify-center mt-10">
         {
           details.length < 1 &&
@@ -48,17 +64,16 @@ export const Details = React.memo(() => {
             }
             <div className="content mx-auto p-4 md:p-2">{Parser(details[0].content.rendered)}</div>
             <div className="mb-20">
-
               {
                 details[0]._embedded.author[0].name &&
                 <div className="border p-2">
                   <div className="md:flex mx-auto items-center justify-center">
-                    <img className="w-20 rounded-full bg-cover h-20 flex justify-center mx-auto" src={details[0]._embedded.author[0].yoast_head_json.og_image[0].url} alt="icon" />
+                    <img className="w-20 rounded-full bg-cover h-20" src={details[0]._embedded.author[0].yoast_head_json.og_image[0].url} alt="icon" />
                     <div className="flex flex-col">
                       <p className="text-2xl font-bold">By: {details[0]._embedded.author[0].name}</p>
                       <p className="text-2xl cursor-pointer hover:text-blue-400 font-bold">
                         Mais Sobre o Autor:
-                        <a href={details[0]._embedded.author[0].yoast_head_json.og_url} target="_blank">
+                        <a href={details[0]._embedded.author[0].yoast_head_json.og_url} target="_blank" rel="noreferrer">
                           {details[0]._embedded.author[0].yoast_head_json.og_url}
                         </a>
                       </p>

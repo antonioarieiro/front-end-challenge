@@ -10,7 +10,24 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+
   p {
     font-size: 18px;
+  }
+}
+
+.return-btn {
+  padding: 2px;
+  height: 32px;
+  /* UI Properties */
+  border: 1px solid #000;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    transition: all 0.2s ease-in;
+    background: #C2E7FF;
+    color: #000;
+    font-weight: bold;
   }
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import ActiveButton from "../../_components/Buttons/ActiveButton";
 import { Components } from "../../_components/Components";
 import { Service } from "../../_service/Apiki";
 
@@ -19,7 +18,6 @@ export const Home = React.memo(() => {
     <>
       <div className="w-full flex flex-col items-center justify-center">
         <span className="min-w-full border mt-4 mb-4"></span>
-       
         {
           inFetch &&
           <div className="md:flex mobile-container flex-wrap md:ml-4 md:mr-4 p-4 ">
