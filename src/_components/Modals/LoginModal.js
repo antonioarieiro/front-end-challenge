@@ -19,7 +19,7 @@ export default function LoginModal(props) {
     <>
       <div className={
         isModalLogin
-        ? ' w-full flex items-center flex-col mx-auto absolute my-auto h-full justify-center '
+        ? 'w-full flex items-center flex-col mx-auto absolute my-auto h-full justify-center'
         : 'hidden'
       }>
         <div className='relative p-4 w-full max-w-md h-full md:h-auto'>

@@ -2,12 +2,13 @@ import React from "react";
 import ActiveButton from "../../_components/Buttons/ActiveButton";
 import { Components } from "../../_components/Components";
 import { Service } from "../../_service/Apiki";
+
 import './Home.scss';
 export const Home = React.memo(() => {
   const [data, setData] = React.useState([]);
   const [inFetch, setInFetch] = React.useState(false);
   const [page, setPage] = React.useState(1);
-  const options = ['Todos', 'Mais Recentes', 'Mais Acessados'];
+
   React.useEffect(() => {
     (async () => {
       await Service.getFirstNews(setData, setInFetch);
@@ -18,30 +19,19 @@ export const Home = React.memo(() => {
     <>
       <div className="w-full flex flex-col items-center justify-center">
         <span className="min-w-full border mt-4 mb-4"></span>
-        <div className="flex items-center filter">
-          <select className="mr-4 border">
-            {
-              options.map((_value, key) => (
-                <option key={key}>
-                  {_value}
-                </option>
-              ))
-            }
-          </select>
-          <ActiveButton text={'Filtrar'} />
-        </div>
+       
         {
           inFetch &&
-          <div className="flex flex-wrap ml-4 mr-4 p-4">
+          <div className="md:flex mobile-container flex-wrap md:ml-4 md:mr-4 p-4 ">
             {Array.from(Array(10).keys()).map((_value) => (
-              <Components.Skelleton key={_value}/>
+              <Components.Skelleton key={_value} />
             ))}
           </div>
         }
         {
           !inFetch &&
           <>
-            <div className="flex flex-wrap ml-4 mr-4 p-4">
+            <div className="md:flex mobile-container md:items-center flex-wrap md:l-4 md:mr-4 p-4">
               <Components.PublicationCard data={data} />
             </div>
             <div className="mb-20">

@@ -11,13 +11,14 @@ function Card(props) {
   const viewPublication = (slug) => {
     setCurrentSlug(slug)
     Navigate(`/details/${slug}`)
-  }
+  };
+
   return (
     <>
       {
         data.length > 0 &&
         data.map((_value, key) => (
-          <div key={key} className='flex flex-col w-[20%] p-4 card'>
+          <div key={key} className='flex flex-col w-full mx-auto md:w-[20%] p-4 card'>
             <img src={_value.yoast_head_json.og_image[0].url} alt="file" className="w-96 bg-cover" />
             <div className="flex items-center mt-2">
               <p className="font-bold">{_value._embedded.author[0].name}</p>
@@ -33,7 +34,7 @@ function Card(props) {
         ))
       }
     </>
-  )
+  );
 }
 
 const PublicationCard = React.memo(Card);

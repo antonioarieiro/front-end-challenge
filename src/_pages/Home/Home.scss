@@ -23,3 +23,11 @@
   color: #ffff;
   background: #C2E7FF;
 }
+
+.mobile-container {
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
