@@ -37,7 +37,7 @@ export const Details = React.memo(() => {
               details[0]._embedded.author[0].name &&
               <div className="md:flex items-center">
                 <img className="w-20 rounded-full bg-cover h-20 flex items-center justify-center mx-auto" src={details[0]._embedded.author[0].yoast_head_json.og_image[0].url} alt="icon" />
-                <div className="flex flex-col w-96">
+                <div className="flex flex-col w-96 items-center mx-auto mt-2">
                   <p>Twitter: {details[0]._embedded.author[0].yoast_head_json.twitter_site}</p>
                   <p>{details[0].date}</p>
                 </div>
@@ -53,7 +53,7 @@ export const Details = React.memo(() => {
                 details[0]._embedded.author[0].name &&
                 <div className="border p-2">
                   <div className="md:flex mx-auto items-center justify-center">
-                    <img className="w-20 rounded-full bg-cover h-20 flex " src={details[0]._embedded.author[0].yoast_head_json.og_image[0].url} alt="icon" />
+                    <img className="w-20 rounded-full bg-cover h-20 flex justify-center mx-auto" src={details[0]._embedded.author[0].yoast_head_json.og_image[0].url} alt="icon" />
                     <div className="flex flex-col">
                       <p className="text-2xl font-bold">By: {details[0]._embedded.author[0].name}</p>
                       <p className="text-2xl cursor-pointer hover:text-blue-400 font-bold">
@@ -64,7 +64,7 @@ export const Details = React.memo(() => {
                       </p>
                     </div>
                   </div>
-                  <p>{details[0]._embedded.author[0].description}</p>
+                  <p className="w-full">{details[0]._embedded.author[0].description}</p>
                 </div>
               }
             </div>
